@@ -4,8 +4,24 @@ namespace EvenFibonacciSum
 {
     class Program
     {
+        const int MAX = 5000000;
         static void Main(string[] args)
         {
+            var sequence = new FibonacciSequence();
+            var nextSum = 0;
+
+            int sum;
+            int nextEven;
+
+            do
+            {
+                sum = nextSum;
+                nextEven = sequence.NextEven();
+                nextSum = sum + nextEven; //just minimizing number of additions at the expense of memory
+            }
+            while (nextSum < MAX);
+
+            Console.WriteLine(sum);
         }
     }
 
